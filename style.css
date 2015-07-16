@@ -1,0 +1,48 @@
+/* Styles go here */
+
+body {
+    font-family:'PT Sans', sans-serif;
+    background-image: url("img/wood.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+
+#head{
+
+    /*background: -webkit-linear-gradient(to right,#663300, #855C33);
+    background: -o-linear-gradient(red, blue);
+    background: -moz-linear-gradient(red, blue);*/
+    background: linear-gradient(to right,#663300, #754719,#855C33);
+    box-shadow: 0px 12px 21px #663300;
+
+    height:100px;
+
+}
+#logo{
+    float:left;
+    font-size:50px;
+    font-weight: bold;
+    color:red;
+
+}
+
+#inner-content{
+
+    max-width: 750px;
+    min-height: 500px;
+    background-image: url("img/Food.jpg");
+    background-repeat: no-repeat;
+    box-shadow: 10px;
+
+}
+
+#inner-content ul li a{
+    color: #ABABAB;
+    font-size: 20px;
+}
+
+#inner-content li a:hover {
+    background-color:#A37519;
+}
