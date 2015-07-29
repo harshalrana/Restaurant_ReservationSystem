@@ -57,7 +57,6 @@ h3{
     min-height: 500px;
     background-image: url("img/wood6.jpg");
     background-repeat: no-repeat;
-    box-shadow: 10px;
     background-size:cover;
 }
 }
@@ -90,3 +89,16 @@ h3{
         box-shadow: 10px;
         margin: 35px auto;
     }
+
+#profile_details_table{
+
+    font-size:115%;
+    font-weight:bold;
+    font-style:italic;
+}
+
+#existing_reservation_details_table{
+    font-family: Georgia;
+    font-size:115%;
+    font-weight:bold;
+}

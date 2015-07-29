@@ -35,7 +35,7 @@
 
     <div id="content" class="tab-content">
      <div class="tab-pane active" id="reservation">
-        <h4>Reservation List</h4>
+        <h3>Reservation List</h3>
         <div class="row">
             <div class="col-md-3 col-md-offset-9">
                <div class="input-group">
@@ -147,6 +147,7 @@
         <!--section-->
 
         <div class="tab-pane" id="seating">
+            <h3>Seating</h3>
             <div class="row">
                 <div class="col-md-6">
                     <table class="table table-striped">
@@ -245,9 +246,10 @@
         <div class="tab-pane" id="profile">
 <div class="row">
     <div class="col-md-6">
-        <h4>Edit Profile</h4>
+        <form>
+        <h3>Edit Profile</h3>
         <div class="row">
-            <form class="form-inline" >
+
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -260,7 +262,7 @@
                         <input type="tel" class="form-control" id="contact" placeholder="">
                     </div>
                 </div>
-                 </div>
+        </div>
               <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
@@ -274,18 +276,16 @@
                         <input type="text" class="form-control" id="address" placeholder="">
                     </div>
                 </div>
-
-
-                <div class="text-center">
+                  <div class="text-center">
                     <button type="submit" class="btn large-btn btn-primary">Edit</button>
                 </div>
-        </div>
+              </div>
         </form>
 
     </div>
     <div class="col-md-6">
     <h4>Current Profile:</h4>
-        <table>
+        <table id="profile_details_table">
             <thead>
             </thead>
             <tbody>
@@ -309,6 +309,7 @@
         </table>
     </div>
 </div>
+        </div>
         </div>
     </div>
 
