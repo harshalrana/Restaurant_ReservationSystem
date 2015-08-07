@@ -2,157 +2,167 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <title>Fresh!!!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+    <title>Fresh!!!</title>
 </head>
 
-<body>
+<body ng-app="RestuarantReservationSystem" ng-controller="ReservationController as RController">
 <header>
-  <div id="head">
-    <div class="container">
-      <span id="logo>">Eat Fresh!!!</span>
+    <div id="head">
+        <div class="container">
+            <span id="logo>">Eat Fresh!!!</span>
+        </div>
     </div>
-  </div>
 </header>
 
 <section>
-  <nav>
-  <div class="container" id="inner-content">
-    <ul class="nav nav-tabs nav-justified">
-      <li class="active"><a href="#tab-guest" data-toggle="tab">Guest</a>
-      </li>
-      <li><a href="#tab-owner" data-toggle="tab">Owner</a>
-      </li>
-    </ul>
-    <div id="content" class="tab-content">
-      <div class="tab-pane active" id="tab-guest">
-        <h3>Make a Reservation</h3>
-        <form role="form">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="reserveDate">Date</label>
-                <input type="date" class="form-control" id="reserveDate" placeholder="MM/DD/YYYY">
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="reserveTime">Time</label>
-                <input type="time" class="form-control" id="reserveTime" placeholder="HH:MM">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-            <label for="reserveName">Name</label>
-            <input type="text" class="form-control" id="reserveName" placeholder="Enter Your Name">
-              </div>
-            </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-            <label for="reservePhone">Phone</label>
-            <input type="tel" class="form-control" id="reservePhone" placeholder="Enter Your Phone">
-            </div>
-          </div>
-            </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-            <label for="reserveEmail">Email</label>
-            <input type="email" class="form-control" id="reserveEmail" placeholder="example@domain.com">
-              </div>
-            </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                <label for="reserveSize">Members</label>
-                <input type="number" class="form-control" id="reserveSize" placeholder="# Guests">
-              </div>
-            </div>
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn large-btn btn-primary">Reserve</button>
-            <button type="button" class="btn btn-link"><a href="#tab-existing-reservation" data-toggle="tab">Edit Existing Reservation?</a></button>
-          </div>
-        </form>
-      </div>
-      <div class="tab-pane" id="tab-owner">
-        <h3>Login</h3>
-          <div class="row">
-        <form role="form">
-            <div class="col-sm-6">
-          <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="example@domain.com">
-          </div>
+    <nav>
+        <div class="container" id="inner-content">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#tab-guest" data-toggle="tab">Guest</a>
+                </li>
+                <li><a href="#tab-owner" data-toggle="tab">Owner</a>
+                </li>
+            </ul>
+            <div id="content" class="tab-content">
+                <div class="tab-pane active" id="tab-guest">
+                    <h3>Make a Reservation</h3>
+                    <form name="reservationForm" novalidate>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reserveDate">Date</label>
+                                    <input type="date" name="date" class="form-control" id="reserveDate" placeholder="MM/DD/YYYY">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reserveTime">Time</label>
+                                    <input type="time" class="form-control" id="reserveTime" placeholder="HH:MM">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reserveName">Name</label>
+                                    <input type="text" name="ReserveName" class="form-control" id="reserveName" placeholder="Enter Your Name">
+                                    <div class="has-error" ng-if="reservationForm.ReserveName.$dirty">
+                                        <p >name is required {{ 455 | currency}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reservePhone">Phone</label>
+                                    <input type="tel" class="form-control" id="reservePhone" placeholder="Enter Your Phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reserveEmail">Email</label>
+                                    <input type="email" class="form-control" id="reserveEmail" placeholder="example@domain.com">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reserveSize">Members</label>
+                                    <input type="number" class="form-control" id="reserveSize" placeholder="# Guests">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn large-btn btn-primary">Reserve</button>
+                            <button type="button" class="btn btn-link"><a href="#tab-existing-reservation" data-toggle="tab">Edit Existing Reservation?</a></button>
+                        </div>
+                    </form>
                 </div>
-            <div class="col-sm-6">
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password">
-          </div>
-                </div>
-          <div class="text-center">
-            <button type="submit" class="btn large-btn btn-primary">Submit</button>
-            <button type="button" class="btn btn-link">Forgot Password?</button>
-          </div>
-        </form>
-          </div>
-      </div>
-
-        <div class="tab-pane" id="tab-existing-reservation">
-                <div class="row">
-                    <div class="col-md-6">test</div>
-                    <div class="col-md-6">
-                        <h3>Reservation Details</h3>
-                        <table id="existing_reservation_details_table">
-                            <thead>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Date: </td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>Time: </td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>Name: </td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>Phone: </td>
-                                <td>(***) ***-****</td>
-                            </tr>
-                            <tr>
-                                <td>Email:</td>
-                                <td>abc@xyz.com</td>
-                            </tr>
-                            <tr>
-                                <td>Members:</td>
-                                <td>-</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                <div class="tab-pane" id="tab-owner">
+                    <h3>Login</h3>
+                    <div class="row">
+                        <form role="form">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" class="form-control" id="email" placeholder="example@domain.com">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn large-btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-link">Forgot Password?</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+
+                <div class="tab-pane" id="tab-existing-reservation">
+                    <div class="row">
+                        <div class="col-md-6">test</div>
+                        <div class="col-md-6">
+                            <h3>Reservation Details</h3>
+                            <table id="existing_reservation_details_table">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Date: </td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Time: </td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Name: </td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone: </td>
+                                    <td>(***) ***-****</td>
+                                </tr>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td>abc@xyz.com</td>
+                                </tr>
+                                <tr>
+                                    <td>Members:</td>
+                                    <td>-</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
         </div>
-
-
-
-
-
-    </div>
-  </div>
     </nav>
 </section>
+
+
+
 </body>
 
 </html>
