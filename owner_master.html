@@ -4,14 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <title>Fresh!!!</title>
 </head>
-<body>
+<body ng-app="RestuarantReservationSystem">
 <header>
     <div id="head">
         <div class="container">
@@ -19,304 +14,37 @@
         </div>
     </div>
 </header>
-<section>
-    <nav>
+
 <div class="container" id="inner-content-owner">
     <ul class="nav nav-tabs nav-justified">
-        <li class="active"><a href="#reservation" data-toggle="tab">Reservation</a>
+        <li><a href="#/reservation-list">Reservation</a>
         </li>
-        <li><a href="#seating" data-toggle="tab">Seating</a>
+        <li><a href="#/seating">Seating</a>
         </li>
-        <li><a href="#profile" data-toggle="tab">Profile</a>
+        <li><a href="#/profile">Profile</a>
         </li>
-        <li><a href="#contacts" data-toggle="tab">Contacts</a>
+        <li><a href="#/contact">Contacts</a>
         </li>
     </ul>
+    <section ng-view>
+        <nav>
 
-    <div id="content" class="tab-content">
-     <div class="tab-pane active" id="reservation">
-        <h3>Reservation List</h3>
-        <div class="row">
-            <div class="col-md-3 col-md-offset-9">
-               <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search Reservation" id="inputSearch">
-                 <div class="input-group-btn">
-                  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i>
-                  </button>
-            </div>
-        </div>
-            </div>
-             </div>
-        <table class="table table-striped">
-            <thead>
-        <tr>
-            <th>Table No</th>
-            <th>Reservation Code</th>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Guests</th>
-            <th>Notes</th>
-            <th>Details</th>
-        </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>FD5YC</td>
-                <td>Harshal Rana</td>
-                <td>07-17-2015 7PM</td>
-                <td>6</td>
-                <td>Birthday Celebration</td>
-                <td>
-                <button class="btn btn-primary" title="Open Details">
-                    <span class="glyphicon glyphicon-open-file"></span>
-                </button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>FD5YC</td>
-                <td>Akash Patel</td>
-                <td>07-18-2015 9PM</td>
-                <td>3</td>
-                <td>-</td>
-                <td>
-                    <button class="btn btn-primary" title="Open Details">
-                        <span class="glyphicon glyphicon-open-file"></span>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>FD5YC</td>
-                <td>Harshal Rana</td>
-                <td>07-17-2015 7PM</td>
-                <td>6</td>
-                <td>Birthday Celebration</td>
-                <td>
-                    <button class="btn btn-primary" title="Open Details">
-                        <span class="glyphicon glyphicon-open-file"></span>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>FD5YC</td>
-                <td>Harshal Rana</td>
-                <td>07-17-2015 7PM</td>
-                <td>6</td>
-                <td>Birthday Celebration</td>
-                <td>
-                    <button class="btn btn-primary" title="Open Details">
-                        <span class="glyphicon glyphicon-open-file"></span>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>FD5YC</td>
-                <td>Harshal Rana</td>
-                <td>07-17-2015 7PM</td>
-                <td>6</td>
-                <td>Birthday Celebration</td>
-                <td>
-                    <button class="btn btn-primary" title="Open Details">
-                        <span class="glyphicon glyphicon-open-file"></span>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>FD5YC</td>
-                <td>Harshal Rana</td>
-                <td>07-17-2015 7PM</td>
-                <td>6</td>
-                <td>Birthday Celebration</td>
-                <td>
-                    <button class="btn btn-primary" title="Open Details">
-                        <span class="glyphicon glyphicon-open-file"></span>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-
-        </table>
-    </div>
-
-        <!--section-->
-
-        <div class="tab-pane" id="seating">
-            <h3>Seating</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>Table No</th>
-                            <th>Size</th>
-                            <th>Status</th>
-                            <th>Since</th>
-                            <th>Reservation Code</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>6</td>
-                            <td>Occupied</td>
-                            <td>7PM</td>
-                            <td><button type="button" class="btn btn-link">FD5YC</button></td>
-
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>6</td>
-                            <td>Occupied</td>
-                            <td>7PM</td>
-                            <td><button type="button" class="btn btn-link">FD5YC</button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>Occupied</td>
-                            <td>7PM</td>
-                            <td><button type="button" class="btn btn-link">FD5YC</button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>Occupied</td>
-                            <td>7PM</td>
-                            <td><button type="button" class="btn btn-link">FD5YC</button></td>
-                        <tr>
-                            <td>1</td>
-                            <td>6</td>
-                            <td>Occupied</td>
-                            <td>7PM</td>
-                            <td><button type="button" class="btn btn-link">FD5YC</button></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>6</td>
-                            <td>Occupied</td>
-                            <td>7PM</td>
-                            <td><button type="button" class="btn btn-link">FD5YC</button></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>Available</td>
-                            <td>-</td>
-                            <td><button type="button" class="btn btn-link">-</button></td>
-                        </tr>
-                        </tbody>
-
-                    </table>
-                </div>
-                <div class="col-md-6">
-                        <div class="col-md-4">
-                            <div class="seats img-rounded">
-                            </div>
-                            <div><span>Table #1</span> <span>Occupied</span>
-                                <span><button type="button" class="btn btn-link">FD5YC</button></span>
-                                </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="seats img-circle">
-                            </div>
-                            <div><span>Table #2</span> <span>Occupied</span>
-                                <span><button type="button" class="btn btn-link">FD5YC</button></span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                    <div class="seats img-circle">
-                    </div>
-                    <div><span>Table #3</span> <span>Available</span>
-                        <span><button type="button" class="btn btn-link">-</button></span>
-                    </div>
-                </div>
-                </div>
-                </div>
-                </div>
-
-        <!--profile-->
-
-        <div class="tab-pane" id="profile">
-<div class="row">
-    <div class="col-md-6">
-        <form>
-        <h3>Edit Profile</h3>
-        <div class="row">
-
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="contact">Contact</label>
-                        <input type="tel" class="form-control" id="contact" placeholder="">
-                    </div>
-                </div>
-        </div>
-              <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" placeholder="">
-                    </div>
-                </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn large-btn btn-primary">Edit</button>
-                </div>
-              </div>
-        </form>
-
-    </div>
-    <div class="col-md-6">
-    <h4>Current Profile:</h4>
-        <table id="profile_details_table">
-            <thead>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Restaurant Name: </td>
-                <td>Fresh</td>
-            </tr>
-            <tr>
-                <td>Contact: </td>
-                <td>(***) ***-****</td>
-            </tr>
-            <tr>
-                <td>Email: </td>
-                <td>abc@fresh.com</td>
-            </tr>
-            <tr>
-                <td>Address: </td>
-                <td>xyz</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-        </div>
-        </div>
-    </div>
-
-        
-
-</div>
-    </nav>
+        </nav>
     </section>
+</div>
+
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="angular.js"></script>
+<script src="https://code.angularjs.org/1.4.3/angular-route.js"></script>
+<script src="script.js"></script>
+<script src="controllers/reservation-list.js"></script>
+<script src="controllers/seating-details.js"></script>
+<script src="controllers/profile-details.js"></script>
+<script src="controllers/contact-details.js"></script>
 </body>
 </html>
