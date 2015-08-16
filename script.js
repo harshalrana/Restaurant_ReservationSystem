@@ -3,28 +3,43 @@
     'use strict';
 
     angular
-        .module('RestuarantReservationSystem', ['ngRoute'])
+        .module('RestuarantReservationSystem', ['ngRoute','ngMessages'])
         .config(moduleConfig);
 
+    angular.module('RestuarantReservationSystem').controller('MainController', MainControllerFn);
+
+
+
+    function MainControllerFn($http) {
+        var mainVm = this;
+        mainVm.addReservation = function(isFormValid) {
+
+        	if(isFormValid){
+            mainVm.flag=1;
+              console.log(mainVm.flag);
+                $http({
+                	method:'POST',
+                	url:'http://localhost:8080/RestuarantReservationApp/api/reservationlist/add',
+                	data:mainVm.newRev	
+                })
+                	 .success(function(data){
+                		 console.log(data);
+                		 mainVm.reservations = data; 
+                		 
+                	 })
+                	 .error(function(err){
+                		 console.log(err); 
+            });
+        }
+        	else{
+        		console.log('invalid form')}
+        	}
+
+    }
     moduleConfig.$inject = ['$routeProvider'];
     function moduleConfig($routeProvider) {
         $routeProvider
-            .when('/guests', {
-                templateUrl: 'templates/guests-reservation.html',
-                controller: 'GuestReservationCtlr',
-                controllerAs: 'guestVm'
-            })
-            .when('/owner', {
-                templateUrl: 'templates/owner-login.html',
-                controller: 'OwnerLoginCtlr',
-                controllerAs: 'ownerVm'
-            })
-            .when('/edit-reservation', {
-                templateUrl: 'templates/edit-reservation.html',
-                controller: 'EditReservationCtlr',
-                controllerAs: 'editVm'
-            })
-            .when('/reservation-list', {
+            .when('/reservation-list/', {
                 templateUrl: 'templates/reservation-list.html',
                 controller: 'ReservationListCtlr',
                 controllerAs: 'rlistVm'
@@ -44,10 +59,36 @@
                 controller: 'ContactDetailsCtlr',
                 controllerAs: 'contactVm'
             })
+            .when('/reservation-details/:code', {
+                templateUrl: 'templates/reservation-details.html',
+                controller: 'reservationDetailsCtlr',
+                controllerAs: 'rDetailsVm'
+            })
+            .when('/assign-table', {
+                templateUrl: 'templates/assign-table.html',
+                controller: 'assignTableCtlr',
+                controllerAs: 'assignVm'
+            })
             .otherwise({
-                redirectTo: ''
+                redirectTo: '/reservation-list'
             });
     }
 
 
 })();
+
+function validate(){
+    var username = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+
+    if ( username == "xyz@eatfresh.com" && password == "123"){
+        window.location = "owner_master.html";
+        return false;
+    }
+
+    else{
+        alert ("Email or Password are incorrect");
+        window.location = "index.html";
+        return false;
+    }
+}

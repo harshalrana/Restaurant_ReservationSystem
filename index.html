@@ -10,7 +10,7 @@
     <title>Fresh!!!</title>
 </head>
 
-<body ng-app="RestuarantReservationSystem">
+<body ng-app="RestuarantReservationSystem" ng-controller="MainController as mainVm">
 <header>
     <div id="head">
         <div class="container">
@@ -19,34 +19,156 @@
     </div>
 </header>
 
-
+<section>
+    <nav>
         <div class="container" id="inner-content">
             <ul class="nav nav-tabs nav-justified">
-                <li><a href="#/guests">Guest</a>
+                <li class="active"><a href="#tab-guest" data-toggle="tab"><span class="glyphicon glyphicon-user"></span> Guest</a>
                 </li>
-                <li><a href="#/owner">Owner</a>
+                <li><a href="#tab-owner" data-toggle="tab"><span class="glyphicon glyphicon-briefcase"></span> Owner</a>
                 </li>
             </ul>
+            <div id="content" class="tab-content">
+                <div class="tab-pane active" id="tab-guest">
+                    <h3 class="headerStyle">Make a Reservation</h3>
+                    <form name="reservationForm" data-ng-submit="mainVm.addReservation(reservationForm.$valid)" novalidate>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reserveDate"><span class="glyphicon glyphicon-calendar"></span> Date</label>
+                                    <input type="date" name="date" data-ng-model="mainVm.newRev.date" class="form-control" id="reserveDate" placeholder="MM/DD/YYYY" required>
+                                    <div ng-messages="reservationForm.date.$error" ng-if="reservationForm.date.$dirty" class="error-validate">
+                                        <p ng-message="required">Date is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reserveTime"><span class="glyphicon glyphicon-time"></span> Time</label>
+                                    <input type="time" name="Time" data-ng-model="mainVm.newRev.time" class="form-control" id="reserveTime" placeholder="HH:MM" required>
+                                    <div ng-messages="reservationForm.Time.$error" ng-if="reservationForm.Time.$dirty" class="error-validate">
+                                        <p ng-message="required">Time is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reserveName"><span class="glyphicon glyphicon-pencil"></span> Name</label>
+                                    <input type="text" name="reserveName" data-ng-model="mainVm.newRev.name" class="form-control" id="reserveName" placeholder="Enter Your Name" required>
+                                    <div ng-messages="reservationForm.reserveName.$error" ng-if="reservationForm.reserveName.$dirty" class="error-validate">
+                                        <p ng-message="required">Name is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reservePhone"><span class="glyphicon glyphicon-phone"></span> Phone</label>
+                                    <input type="tel" name="tel" data-ng-model="mainVm.newRev.phone" class="form-control" id="reservePhone" placeholder="Enter Your Phone" required>
+                                    <div ng-messages="reservationForm.tel.$error" ng-if="reservationForm.tel.$dirty" class="error-validate">
+                                        <p ng-message="required">Phone is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reserveEmail"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+                                    <input type="email" name="email" data-ng-model="mainVm.newRev.email" class="form-control" id="reserveEmail" placeholder="example@domain.com" required>
+                                    <div ng-messages="reservationForm.email.$error" class="error-validate" ng-if="reservationForm.email.$dirty">
+                                        <p ng-message="required">Email is required</p>
+                                        <p ng-message="email">Email is invalid</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="reserveSize"><span class="glyphicon glyphicon-user"></span> Members</label>
+                                    <input type="number" name="members" data-ng-model="mainVm.newRev.guests" class="form-control" id="reserveSize" placeholder="# Guests" required>
+                                    <div ng-messages="reservationForm.members.$error" ng-if="reservationForm.members.$dirty" class="error-validate">
+                                        <p ng-message="required">Members is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn large-btn btn-primary"><span class="glyphicon glyphicon-cutlery"></span> Reserve</button>
+                            <button type="button" class="btn btn-link"><a href="#tab-existing-reservation" data-toggle="tab"><span class="glyphicon glyphicon-edit"></span> Edit Existing Reservation?</a></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="tab-owner">
+                    <h3 class="headerStyle">Login</h3>
+                    <form role="form" name="ownerLoginForm">
+                    <div class="row">
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email address</label>
+                                    <input type="email" name="loginEmail" ng-model="email" class="form-control" id="email" placeholder="example@domain.com" required>
+                                    <div ng-messages="ownerLoginForm.loginEmail.$error" class="error-validate" ng-if="ownerLoginForm.loginEmail.$dirty">
+                                        <p ng-message="required">Email is required</p>
+                                        <p ng-message="email">Email is invalid</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="password"><span class="glyphicon glyphicon-lock"></span> Password</label>
+                                    <input type="password" name="password" ng-model="password" class="form-control" id="password" placeholder="Password" required>
+                                    <div ng-messages="ownerLoginForm.password.$error" class="error-validate" ng-if="ownerLoginForm.password.$dirty">
+                                        <p ng-message="required">Email is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn large-btn btn-primary" onclick="validate()"><span class="glyphicon glyphicon-log-in"></span> Log in</button>
+                        </div>
+                    </form>
+                </div>
 
-            <section ng-view>
-                <nav>
-                </nav>
-            </section>
+                <div class="tab-pane" id="tab-existing-reservation">
+                    <h3 class="headerStyle">Edit Reservation</h3>
+                    <div class="row">
+                        <form name="ccForm" novalidate>
+                                <div class="col-sm-6">
+                                  <div class="form-group">
+                                     <label for="ccode"><span class="glyphicon glyphicon-barcode"></span> Confirmation Code</label>
+                                      <input id="ccode" type="text" name="ccode" ng-model="text" required>
+                                    <div class="ccodeValidation" ng-messages="ccForm.ccode.$error" ng-if="ccForm.ccode.$dirty">
+                                        <p ng-message="required">confirmation code is required</p>
+                                    </div>
+                                  </div>
+                                    <div class="editButton">
+                                    <button type="submit" class="btn large-btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Submit</button>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                            
+                    </div>
+                </div>
+
+
+
+
+<div ng-if="mainVm.flag==1" id="success-rev"><h4 class="header-rev">Your Reservation is Successful!!!</div>
+            </div>
         </div>
-
+    </nav>
+</section>
 
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="style.css">
-
+<script src="angular.js"></script>
+<script src="https://code.angularjs.org/1.4.3/angular-messages.js"></script>
+<script src="https://code.angularjs.org/1.4.3/angular-route.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="angular.js"></script>
-<script src="https://code.angularjs.org/1.4.3/angular-route.js"></script>
 <script src="script.js"></script>
-<script src="controllers/user-reservation.js"></script>
-<script src="controllers/owner-login.js"></script>
-<script src="controllers/edit-reservation.js"></script>
 </body>
 
 </html>

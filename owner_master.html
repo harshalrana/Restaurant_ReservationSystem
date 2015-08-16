@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Fresh!!!</title>
 </head>
 <body ng-app="RestuarantReservationSystem">
@@ -17,13 +19,13 @@
 
 <div class="container" id="inner-content-owner">
     <ul class="nav nav-tabs nav-justified">
-        <li><a href="#/reservation-list">Reservation</a>
+        <li><a href="#/reservation-list"><span class="glyphicon glyphicon-th-list"></span> Reservations</a>
         </li>
-        <li><a href="#/seating">Seating</a>
+        <li><a href="#/seating"><span class="glyphicon glyphicon-th"></span> Seating</a>
         </li>
-        <li><a href="#/profile">Profile</a>
+        <li><a href="#/profile"><span class="glyphicon glyphicon-list-alt"></span> Profile</a>
         </li>
-        <li><a href="#/contact">Contacts</a>
+        <li><a href="#/contact"><span class="glyphicon glyphicon-book"></span> Contacts</a>
         </li>
     </ul>
     <section ng-view>
@@ -34,17 +36,19 @@
 </div>
 
 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="style.css">
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="angular.js"></script>
 <script src="https://code.angularjs.org/1.4.3/angular-route.js"></script>
+<script src="https://code.angularjs.org/1.4.3/angular-messages.js"></script>
 <script src="script.js"></script>
 <script src="controllers/reservation-list.js"></script>
 <script src="controllers/seating-details.js"></script>
 <script src="controllers/profile-details.js"></script>
 <script src="controllers/contact-details.js"></script>
+<script src="controllers/assign-table.js"></script>
+<script src="controllers/reservation-details.js"></script>
 </body>
 </html>

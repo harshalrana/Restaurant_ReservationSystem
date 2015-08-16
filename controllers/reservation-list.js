@@ -9,13 +9,26 @@
         .module('RestuarantReservationSystem')
         .controller('ReservationListCtlr',ReservationListController);
 
-
-    function ReservationListController(){
+    ReservationListController.$inject = ['$http']
+    function ReservationListController($http){
         var rlistVm = this;
-        console.log('reservation list');
+        init();
+        
+     function init(){
+    	 $http({
+    		 method: 'GET',
+    	     url: 'http://localhost:8080/RestuarantReservationApp/api/reservationlist/all'
+    	 })
+    	 .success(function(data){
+    		 console.log(data);
+    		 rlistVm.reservations = data;
+    	 })
+    	 .error(function(err){
+    		 console.log(err);
+    	 })
+    	 
+     }
     }
-
-
 
 
 })();

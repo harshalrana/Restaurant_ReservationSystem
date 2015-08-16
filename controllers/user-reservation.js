@@ -6,7 +6,8 @@
         .controller('GuestReservationCtlr',GuestReservationController);
 
 
-    function GuestReservationController(){
+
+    function GuestReservationController($route){
         var guestVm = this;
         console.log('Guest reservation');
     }
